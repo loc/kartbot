@@ -64,7 +64,7 @@ var chat = {
 var kart = {
 	players: [],
 	active: false,
-	cupholder: "davids",
+	currentCup: "davids",
 
 	parse: function(line, stripColors) { // {{{
 	    var message = {};
@@ -154,7 +154,7 @@ var kart = {
 	},
 	cupholder: function(player) {
 		if (this.cupholder) {
-			chat.msg(this.cupholder + " currently holds the cup.");
+			chat.msg(this.currentCup + " currently holds the cup.");
 		}
 		else {
 			chat.msg("No idea. Probably andyl.");
@@ -163,12 +163,12 @@ var kart = {
 	winner: function(player) {
 		// store winner stats somewhere
 		chat.msg('Congrats, ' + player + "!");
-		if (~this.players.indexOf(this.cupholder)) {
-			if (this.cupholder === player) {
+		if (~this.players.indexOf(this.currentCup)) {
+			if (this.currentCup === player) {
 				chat.msg(player + " retains the cup.");
 			}
 			else {
-				this.cupholder = player;
+				this.currentCup = player;
 				chat.msg(player + " now holds the cup.");
 			}
 		}
