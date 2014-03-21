@@ -20,6 +20,9 @@ List of commands:
     
     cancel
     
+    cupholder
+	who has the cup
+    
     i won
     
     who's playing?
