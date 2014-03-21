@@ -64,6 +64,7 @@ var chat = {
 var kart = {
 	players: [],
 	active: false,
+	cupholder: "davids",
 
 	parse: function(line, stripColors) { // {{{
 	    var message = {};
@@ -151,7 +152,7 @@ var kart = {
 				break;
 		}
 	},
-	cupholder: function() {
+	cupholder: function(player) {
 		if (this.cupholder) {
 			chat.msg(this.cupholder + " currently holds the cup.");
 		}
