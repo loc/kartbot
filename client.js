@@ -136,17 +136,41 @@ var kart = {
 				break;
 			case "cancel":
 				this.cancel();
+				break;
 			case "i won":
 				this.winner(msg.nick);
+				break;
+			case "cupholder":
+			case "who has the cup":
+				this.cupholder();
+				break;
 			case "who's playing?":
 			case "current players":
 			case "players":
 				chat.msg(this.players.length ? "Currently playing: " + this.players.join(", ") : "There is no one playing right now.");
+				break;
+		}
+	},
+	cupholder: function() {
+		if (this.cupholder) {
+			chat.msg(this.cupholder + " currently holds the cup.");
+		}
+		else {
+			chat.msg("No idea. Probably andyl.");
 		}
 	},
 	winner: function(player) {
 		// store winner stats somewhere
 		chat.msg('Congrats, ' + player + "!");
+		if (~this.players.indexOf(this.cupholder)) {
+			if (this.cupholder === player) {
+				chat.msg(player + " retains the cup.");
+			}
+			else {
+				this.cupholder = player;
+				chat.msg(player + " now holds the cup.");
+			}
+		}
 		this.clearGame();
 	},
 	clearGame: function() {
@@ -177,9 +201,14 @@ var kart = {
 		}
 	},
 	game: function(player) {
-		this.active = true;
-		this.players.push(player);
-		chat.msg("Game started by " + player + ". Waiting for 3 more players.");
+		if (!this.active) {
+			this.active = true;
+			this.players.push(player);
+			chat.msg("Game started by " + player + ". Waiting for 3 more players.");
+		}
+		else {
+			chat.msg("There is already a game in progress. Type 'players' to see who is playing or 'cancel' to end the current game.");
+		}
 	},
 }
 
