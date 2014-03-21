@@ -1,0 +1,19 @@
+{
+  "name": "kartbot",
+  "version": "0.0.1",
+  "description": "IRC Mario Kart Bot",
+  "main": "client.js",
+  "dependencies": {
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "Andy Locascio",
+  "license": "BSD"
+}
